@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Norma Gaitán · Sensoria</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg-deep: #0B2018;
+    --bg-deep-2: #1B4430;
+    --card-bg: #FAF6EC;
+    --gold: #C2A55C;
+    --gold-soft: #E8D9B0;
+    --sage: #7A9B7E;
+    --ink: #15231A;
+    --ink-soft: #51604F;
+    --line: rgba(21,35,26,0.10);
+  }
+  *{ box-sizing: border-box; }
+  body{
+    margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+    background: radial-gradient(circle at 50% 0%, var(--bg-deep-2), var(--bg-deep) 70%);
+    font-family:'Inter', sans-serif; color: var(--ink); padding: 28px 16px;
+  }
+  .card{ width:100%; max-width:380px; background: var(--card-bg); border-radius:22px; overflow:hidden;
+    box-shadow: 0 30px 60px -20px rgba(0,0,0,0.45); }
+  .hero{ position:relative; background: linear-gradient(180deg, var(--bg-deep) 0%, var(--bg-deep-2) 100%);
+    padding: 38px 28px 34px; overflow:hidden; }
+  .hero svg.ripples{ position:absolute; top:0; left:0; width:100%; height:100%; opacity:0.5; }
+  .ripples path{ fill:none; stroke: var(--gold); stroke-width:1; stroke-opacity:0.35; }
+  .ripples path:nth-child(2){ stroke: var(--sage); stroke-opacity:0.3; }
+  .ripples path:nth-child(3){ stroke: var(--gold-soft); stroke-opacity:0.2; }
+  @media (prefers-reduced-motion: no-preference){
+    .ripples path{ animation: drift 14s ease-in-out infinite; }
+    .ripples path:nth-child(2){ animation-duration: 18s; animation-delay: -3s; }
+    .ripples path:nth-child(3){ animation-duration: 22s; animation-delay: -7s; }
+    @keyframes drift{ 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(6px); } }
+  }
+  .wordmark{ position:relative; z-index:1; font-size:11px; font-weight:600; letter-spacing:0.22em;
+    text-transform:uppercase; color: var(--gold-soft); margin:0 0 22px; }
+  .name{ position:relative; z-index:1; font-family:'Fraunces', serif; font-optical-sizing: auto; font-weight:500;
+    font-size: 30px; line-height:1.15; color: #FFFDF8; margin:0 0 6px; }
+  .role{ position:relative; z-index:1; font-size:12px; font-weight:600; letter-spacing:0.14em;
+    text-transform:uppercase; color: var(--gold); margin:0; }
+  .details{ padding: 26px 28px 8px; }
+  .row{ display:flex; align-items:center; gap:14px; padding: 13px 0; border-bottom: 1px solid var(--line);
+    text-decoration:none; color: var(--ink); }
+  .row:last-child{ border-bottom:none; }
+  .row .icon{ flex:0 0 auto; width:34px; height:34px; border-radius:50%; background: rgba(122,155,126,0.12);
+    display:flex; align-items:center; justify-content:center; }
+  .row .icon svg{ width:16px; height:16px; stroke: var(--sage); }
+  .row .text{ display:flex; flex-direction:column; min-width:0; }
+  .row .label{ font-size:10.5px; color: var(--ink-soft); letter-spacing:0.05em; text-transform:uppercase; margin-bottom:1px; }
+  .row .value{ font-size:14.5px; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .actions{ padding: 14px 28px 30px; }
+  .save-btn{ width:100%; border:none; background: var(--ink); color: #FAF6EC; font-family:'Inter', sans-serif;
+    font-size:14px; font-weight:600; letter-spacing:0.02em; padding:15px 18px; border-radius:12px; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; gap:9px; transition: background 0.2s ease, transform 0.15s ease; }
+  .save-btn:hover{ background: #0E1A12; }
+  .save-btn:active{ transform: scale(0.98); }
+  .save-btn svg{ width:16px; height:16px; stroke:#FAF6EC; }
+  .footer{ text-align:center; padding: 0 28px 26px; font-size:10.5px; letter-spacing:0.12em;
+    text-transform:uppercase; color: var(--ink-soft); }
+  .footer span{ color: var(--gold); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="hero">
+      <svg class="ripples" viewBox="0 0 380 160" preserveAspectRatio="none">
+        <path d="M-20,40 Q95,10 190,40 T400,40" />
+        <path d="M-20,70 Q95,100 190,70 T400,70" />
+        <path d="M-20,105 Q95,75 190,105 T400,105" />
+      </svg>
+      <p class="wordmark">Sensoria</p>
+      <h1 class="name" id="out-name">—</h1>
+      <p class="role" id="out-role">—</p>
+    </div>
+    <div class="details">
+      <a class="row" id="out-phone-row" href="#">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+        <span class="text"><span class="label">Teléfono</span><span class="value" id="out-phone">—</span></span>
+      </a>
+      <a class="row" id="out-email-row" href="#">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6 12 13 2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></span>
+        <span class="text"><span class="label">Correo</span><span class="value" id="out-email">—</span></span>
+      </a>
+      <a class="row" id="out-location-row" href="#" target="_blank">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 1 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <span class="text"><span class="label">Ubicación</span><span class="value" id="out-location">—</span></span>
+      </a>
+      <a class="row" id="out-website-row" href="#" target="_blank">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+        <span class="text"><span class="label">Sitio web</span><span class="value" id="out-website">—</span></span>
+      </a>
+    </div>
+    <div class="actions">
+      <button class="save-btn" onclick="guardarContacto()">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Guardar contacto
+      </button>
+    </div>
+    <p class="footer">Sensoria <span>·</span> Land of Senses</p>
+  </div>
+
+<script>
+  const ASOCIADO = {
+    nombre:    "Norma Gaitán",
+    puesto:    "Administrative Manager",
+    telefono:  "+506 8382-2052",
+    correo:    "assistance@sensoria.cr",
+    ubicacion: "Plaza Montecazú #16, 2do piso, Escazú",
+    mapsUrl:   "https://www.google.com/maps/search/?api=1&query=Plaza+Montecazu+Escazu+Costa+Rica",
+    sitioWeb:  "sensoria.cr",
+    sitioUrl:  "https://sensoria.cr"
+  };
+
+  document.getElementById('out-name').textContent = ASOCIADO.nombre;
+  document.getElementById('out-role').textContent = ASOCIADO.puesto;
+  document.getElementById('out-phone').textContent = ASOCIADO.telefono;
+  document.getElementById('out-phone-row').href = "tel:" + limpiarTelefono(ASOCIADO.telefono);
+  document.getElementById('out-email').textContent = ASOCIADO.correo;
+  document.getElementById('out-email-row').href = "mailto:" + ASOCIADO.correo;
+  document.getElementById('out-location').textContent = ASOCIADO.ubicacion;
+  document.getElementById('out-location-row').href = ASOCIADO.mapsUrl;
+  document.getElementById('out-website').textContent = ASOCIADO.sitioWeb;
+  document.getElementById('out-website-row').href = ASOCIADO.sitioUrl;
+
+  function limpiarTelefono(t){
+    return t.replace(/[^\d+]/g, '');
+  }
+
+  function guardarContacto(){
+    const partes = ASOCIADO.nombre.trim().split(/\s+/);
+    const nombrePila = partes[0];
+    const apellidos = partes.slice(1).join(' ');
+    const telLimpio = limpiarTelefono(ASOCIADO.telefono);
+
+    const vcard = [
+      "BEGIN:VCARD",
+      "VERSION:3.0",
+      "N:" + apellidos + ";" + nombrePila + ";;;",
+      "FN:" + ASOCIADO.nombre,
+      "ORG:Sensoria",
+      "TITLE:" + ASOCIADO.puesto,
+      "TEL;TYPE=CELL,VOICE:" + telLimpio,
+      "EMAIL:" + ASOCIADO.correo,
+      "URL:" + ASOCIADO.sitioUrl,
+      "END:VCARD"
+    ].join("\n");
+
+    const blob = new Blob([vcard], { type: "text/vcard" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = ASOCIADO.nombre.replace(/\s+/g,'_') + ".vcf";
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }
+</script>
+</body>
+</html>
